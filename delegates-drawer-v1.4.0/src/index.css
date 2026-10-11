@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light mode (default) */
+  --bg: #FAF9F6;
+  --surface: #F5F0E1;
+  --mint: #D9F2E6;
+  --gold: #C9A227;
+  --text: #0B3D2E;
+  --muted: #4A5D54;
+  --surface-2: #EDE6D4;
+}
+
+.dark {
+  --bg: #0A0A0A;
+  --surface: #0B3D2E;
+  --surface-2: #123B2F;
+  --text: #F5F5F5;
+  --muted: #C0C0C0;
+  --gold: #D4AF37;
+  --mint: #1A3C32;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Print styles */
+@media print {
+  nav, .no-print, button, .sidebar {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+  .print-area {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+
+/* Accessibility and responsive defaults */
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+input, textarea, select { color: var(--text); }
+::selection { background: var(--gold); color: #071b13; }
+@media (max-width: 640px) {
+  h1 { overflow-wrap: anywhere; }
+  .print-area { padding: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
